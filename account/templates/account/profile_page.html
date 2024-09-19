@@ -1,0 +1,17 @@
+<!-- account/profile_page.html -->
+<h1>{{ profile.user.username }}'s Profile</h1>
+<p>First Name: {{ profile.first_name }}</p>
+<p>Last Name: {{ profile.last_name }}</p>
+<p>Blood Type: {{ profile.blood_type }}</p>
+<p>Weight: {{ profile.weight }}</p>
+<p>Height: {{ profile.height }}</p>
+<p>Last Donation Date: {{ profile.last_donation_date }}</p>
+
+<h2>Your Blood Donation Requests</h2>
+<ul>
+    {% for request in blood_requests %}
+        <li>{{ request.request_type }} - {{ request.blood_type }} ({{ request.region }}, {{ request.province }}, {{ request.municipality }})</li>
+    {% empty %}
+        <li>You have no blood donation requests.</li>
+    {% endfor %}
+</ul>

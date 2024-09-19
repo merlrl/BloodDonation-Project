@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Blood Donation Requests</h2>
+    
+    <p>Total Requests: {{ blood_donation_requests.count }}</p>
+    
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Request Type</th>
+            <th>Blood Type</th>
+            <th>Region</th>
+            <th>Province</th>
+            <th>Municipality</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+   <tbody>
+    {% for request in blood_donation_requests %}
+    <tr>
+        <!-- Display the user's username -->
+        <td>{{ request.id }}</td> 
+        <td>{{ request.user.username }}</td>
+        <td>{{ request.request_type }}</td>
+        <td>{{ request.blood_type }}</td>
+        <td>{{ request.region }}</td>
+        <td>{{ request.province }}</td>
+        <td>{{ request.municipality }}</td>
+        <td>
+            <p>Request ID: {{ request.id }}</p>
+             <a href="{% url 'blood:blood-detail' request.id %}" class="btn btn-info btn-sm">View</a>
+            <a href="{% url 'blood:blood-update' request.id %}" class="btn btn-warning btn-sm">Edit</a>
+            <a href="{% url 'blood:blood-delete' request.id %}" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</tbody>
+   <a href="{% url 'blood:blood-create' %}" class="btn btn-success mt-3">Create New Request</a>
+</table>
+{% endblock %}

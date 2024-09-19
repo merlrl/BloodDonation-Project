@@ -1,0 +1,35 @@
+<!-- account/profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ profile.user.email }}'s Profile</title>
+    <!-- Bootstrap CSS for styling -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>{{ profile.user.email }}'s Profile</h1>
+        <ul class="list-group mt-3">
+            <li class="list-group-item">First Name: {{ profile.first_name }}</li>
+            <li class="list-group-item">Last Name: {{ profile.last_name }}</li>
+            <li class="list-group-item">Weight: {{ profile.weight }} kg</li>
+            <li class="list-group-item">Height: {{ profile.height }} cm</li>
+            <li class="list-group-item">Region: {{ profile.region }}</li>
+            <li class="list-group-item">Province: {{ profile.province }}</li>
+            <li class="list-group-item">Municipality: {{ profile.municipality }}</li>
+            <li class="list-group-item">Blood Type: {{ profile.blood_type }}</li>
+            <li class="list-group-item">Availability: {{ profile.availability|yesno:"Available,Not Available" }}</li>
+            <li class="list-group-item">Last Donation Date: {{ profile.last_donation_date|date:"F j, Y" }}</li>
+        </ul>
+        
+        <a href="{% url 'profile_update' %}" class="btn btn-primary mt-3">Edit Profile</a>
+        <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Go to Home</a>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

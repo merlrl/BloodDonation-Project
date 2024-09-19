@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+<p>Total Users: {{ total_users }}</p>
+<p>Total Blood Donations: {{ total_donations }}</p>
+<h3>Donations by Type</h3>
+<ul>
+    {% for donation in donations_by_type %}
+    <li>{{ donation.request_type }}: {{ donation.count }}</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'admin-list-users' %}" class="btn btn-primary">View All Users</a>
+{% endblock %}
